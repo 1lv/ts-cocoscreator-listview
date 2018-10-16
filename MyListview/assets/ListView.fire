@@ -420,7 +420,7 @@
       "__id__": 5
     },
     "component": "listview",
-    "handler": "onscrollEvent",
+    "handler": "modifyItem",
     "customEventData": ""
   },
   {
@@ -434,7 +434,7 @@
     "itemPrefab": {
       "__uuid__": "ae14a622-348d-4b98-9041-bcdd439607d5"
     },
-    "itemCount": 2
+    "itemCount": 20
   },
   {
     "__type__": "cc.Canvas",

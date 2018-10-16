@@ -8,14 +8,12 @@ const {ccclass, property} = cc._decorator;
 export default class NewClass extends cc.Component {
     @property(cc.Prefab) itemPrefab:cc.Prefab = null;
 
-    @property itemCount:number = 0;
+    @property itemCount:number = 0;                     //实际需求要创建的item个数
 
-    _space : number = 20;   //item间隙距离
-    // LIFE-CYCLE CALLBACKS:
-
-    _limitCount : number = 10;  //最大个数
+    _space : number = 20;                               //item间隙距离
+    _limitCount : number = 0;                          //最大个数（需计算）
     _itemH : number = 0;
-    _itemArr : any = [];
+    _itemArr : any = [];                                //存放item的数组
     _content = null;
     _predistance : number = 0;
 
@@ -68,7 +66,10 @@ export default class NewClass extends cc.Component {
         console.log("content====>", this._content.y);
     }
 
-    onscrollEvent (sender:any, event:number) {
+    /**
+     * 根据滑动修改item的信息及位置
+     */
+    modifyItem () {
         let distance = Math.floor(this._content.y);                    //当前y距离
         let num = Math.floor(distance/(this._itemH + this._space));    //算有多少个item已被上面隐藏
         if(num === 0){                                                  //最原始item状态
